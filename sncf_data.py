@@ -82,17 +82,13 @@ data = response.json()
 
 list_data = []
 
-for annee in range (2016, 2022):
-    for mois in range(1,13):
-        params['refine.date'] = str(annee) + "/" + str(mois)
-
-        response = requests.get(URL, params = params)
-
-        data = response.json()
-
-        for record in data["records"]:
+list_data = []
+response = requests.get(URL, params = params)
+data = response.json()
+for record in data["records"]:
             list_data.append(record)
 
+            
 frequentation = []
 
 for gare in list_data:

@@ -74,7 +74,7 @@ elif option == 'Question 2':
     left_col, right_col = st.columns(2)
 
 
-    left_col.header("LinePlot (Seaborn)")
+    left_col.header("Dataframe")
     left_col.write("Évolution des objets perdus par type et par mois")
     left_col.dataframe(evolution, use_container_width=True)
 
@@ -135,4 +135,5 @@ elif option == 'Question 2':
 
     elif graph_type == 'Graphique par année':
         graph_annee = right_col.selectbox('', ('Quels graphiques voulez-vous afficher?', 'Graphiques généraux', 'Graphique par année'))
-
+        if graph_annee == 'Graphique par année':
+            st.write(objets_perdus.loc["2017", "type_objet"].resample('M').count().plot())
